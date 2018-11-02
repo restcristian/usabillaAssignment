@@ -1,10 +1,15 @@
 import React from 'react';
+import styles from './Header.css';
+
 
 const Header = props => {
-    return(
+    return (
         <div>
-            <span>{props.title}</span>
+            <div className={styles.header}>
+                <i className="" ></i><span className={styles.title}>{props.title}</span>
+            </div>
         </div>
+
     );
 }
 

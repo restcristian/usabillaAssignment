@@ -1,0 +1,40 @@
+.ratingFilters{
+    display: -webkit-flex;
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    margin:0;
+    padding:0;
+   
+}
+
+.filterItem{
+    margin:0 5px;
+}
+
+.filterItem button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border:none;
+    background-color:#f3f8fb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d1d6da;
+    color:#d1d6da;
+    border-radius: 50%;
+    width:26px;
+    height: 26px;
+    font-size: 12px;
+}
+.filterItem button:hover,
+.active button{
+    background-color:#02aac9;
+    border-color:#02aac9;
+    color:#fff;
+    cursor: pointer;
+}

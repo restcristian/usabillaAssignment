@@ -1,0 +1,27 @@
+.filters{
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    padding:16px 0;
+}
+
+.filters > div:nth-child(2){
+    padding-left: 23px;
+}
+
+@media(max-width:351px){
+    .filters{
+        display: block;
+    }
+    .filters > div:first-child{
+        text-align: center;
+    }
+    .filters > div:nth-child(2){
+        padding-left: 0;
+    }
+    .filters > div:nth-child(2) ul{
+        margin-top:12px;
+        justify-content: center;
+        
+    }
+}
