@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from '../presentational/Header/Header';
 import Filters from '../presentational/Filters/Filters';
+import TableLayout from '../presentational/TableLayout/TableLayout';
 import styles from './App.css';
 class App extends Component {
     state = {
@@ -30,6 +31,7 @@ class App extends Component {
                  <Header title="Dashboard" />
                 <div className = {styles.container}>
                     <Filters filters = {this.state.filters} />
+                    <TableLayout />
                 </div>
             </div>
 

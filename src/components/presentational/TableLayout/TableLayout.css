@@ -1,0 +1,61 @@
+.tableLayout{
+    width:100%;
+    border-radius: 2px;
+    background-color: #fff;
+}
+.tableRow{
+    display: flex;
+    padding:17px 30px 14px 30px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+    /* border-top:1px solid #cdd3d8; */
+    border-bottom:1px solid #cdd3d8;  
+}
+.tableHeading{
+    text-align: left;
+    background-color:#59646c;
+    color:#eff8ff;
+    font-weight: 500;
+    border-top:1px solid #cdd3d8;  
+    
+}
+.rating,
+.comment,
+.browser,
+.device,
+.platfrm{
+    flex:1;
+    text-align:center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.rating{
+    text-align: left;
+}
+.comment{
+    flex:2;
+    text-align: left;
+}
+
+.contentRow{
+    color:#68696b;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.contentRow .rating span{
+    border-radius: 50%;
+    background-color: #02aac9;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    display: inline-block;
+    color:#fff;
+    line-height: 26px;
+    margin-left: 8px;
+    font-size: 12px;
+}
