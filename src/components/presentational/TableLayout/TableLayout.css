@@ -47,6 +47,9 @@
     font-size: 0.9rem;
 }
 
+.contentRow span{
+    word-break: break-all;
+}
 .contentRow .rating span{
     border-radius: 50%;
     background-color: #02aac9;
