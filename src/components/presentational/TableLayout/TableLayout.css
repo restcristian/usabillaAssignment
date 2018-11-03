@@ -20,6 +20,9 @@
     border-top:1px solid #cdd3d8;  
     
 }
+.tableRow > div{
+    padding:0 12px;
+}
 .rating,
 .comment,
 .browser,

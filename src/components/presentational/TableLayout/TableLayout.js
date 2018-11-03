@@ -22,13 +22,6 @@ class TableLayout extends Component {
                         <div className = {styles.device}><span>iPhone 5</span></div>
                         <div className = {styles.platfrm}><span>iOS</span></div>
                     </div>
-                    <div className = {[styles.tableRow, styles.contentRow ].join(' ')}>
-                        <div className = {styles.rating}><span>2</span></div>
-                        <div className = {styles.comment}><span>ssdsldsdlsdlsldlsd</span></div>
-                        <div className = {styles.browser}><span>Chrome</span></div>
-                        <div className = {styles.device}><span>iPhone 5</span></div>
-                        <div className = {styles.platfrm}><span>iOS</span></div>
-                    </div>
             </div>
         );
     }
