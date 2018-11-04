@@ -12,7 +12,8 @@
     /* border-top:1px solid #cdd3d8; */
     border-bottom:1px solid #cdd3d8;  
 }
-.tableHeading{
+.tableHeading,
+.tableMobileHeading{
     text-align: left;
     background-color:#59646c;
     color:#eff8ff;
@@ -53,7 +54,9 @@
 .contentRow span{
     word-break: break-all;
 }
-.contentRow .rating span{
+.contentRow .rating span,
+.mobileContent.mobileRating span
+{
     border-radius: 50%;
     background-color: #02aac9;
     width: 26px;
@@ -64,4 +67,43 @@
     line-height: 26px;
     margin-left: 8px;
     font-size: 12px;
+}
+
+/* Mobile Layout */
+
+
+
+.tableLayoutMobile{
+  
+}
+
+.tableMobileRow{
+    margin:12px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #cdd3d8;
+    border-top: 1px solid #cdd3d8;
+}
+
+.tableMobileHeading{
+  text-align: center;
+  padding:10px 24px 10px 24px;
+}
+
+.mobileRating,
+.mobileContent,
+.mobileComment,
+.mobileBrowser,
+.mobileDevice,
+.mobilePlatfrm
+{
+    display: flex;
+    justify-content: center;
+}
+.mobileContent{
+    padding:8px;
+    font-size: 0.9rem;
+    
+}
+.mobileContent.mobileRating span{
+    margin-left: 0;
 }
