@@ -69,6 +69,10 @@
     font-size: 12px;
 }
 
+.contentRow .browser span{
+    display: block;
+    /* max-width:55px; */
+}
 /* Mobile Layout */
 
 
