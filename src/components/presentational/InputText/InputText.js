@@ -6,7 +6,9 @@ const InputText = props => {
         <input 
             className = {styles.inputText}
             type = {props.type}
-            placeholder = {props.placeholder}/>
+            placeholder = {props.placeholder}
+            onChange = { (event) => props.onChange(event,props.filterKey, props.filterVal)}
+            />
     );
 }
 
