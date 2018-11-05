@@ -13,7 +13,8 @@ class TableLayout extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return this.state.isMobile !== nextState.isMobile;
+        return this.state.isMobile !== nextState.isMobile ||
+               this.props.items.length !== nextProps.items.length;
     }
 
     componentWillUnmount(){
