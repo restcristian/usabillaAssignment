@@ -22,14 +22,14 @@ class App extends Component {
                 isSelected: false,
                 config: {
                     type: 'button',
-                    value:1
+                    value: 1
                 }
             },
             filter2: {
                 isSelected: false,
                 config: {
                     type: 'button',
-                    value:2
+                    value: 2
                 }
 
             },
@@ -37,21 +37,21 @@ class App extends Component {
                 isSelected: false,
                 config: {
                     type: 'button',
-                    value:3
+                    value: 3
                 }
             },
             filter4: {
                 isSelected: false,
                 config: {
                     type: 'button',
-                    value:4
+                    value: 4
                 }
             },
             filter5: {
                 isSelected: false,
                 config: {
                     type: 'button',
-                    value:5
+                    value: 5
                 }
             },
         },
@@ -70,54 +70,119 @@ class App extends Component {
     onFiltering = (event, filterKey, filterVal) => {
 
         const { config } = filterVal;
+        let newState = {};
+
 
         if (config.type === "text") {
             const textValue = event.target.value.toLowerCase();
-            const items = [...this.state.items];
+            // const items = [...this.state.items];
 
+            // if (event.target.value.trim().length === ""){
+            //     this.setState({ filteredItems: newItems });
+            // } else {
 
-            if (event.target.value.trim().length === "") {
-                this.setState({ filteredItems: newItems });
-            } else {
+            //     let newItems = items.filter(item => {
+            //         return item.comment.includes(textValue);
 
-                let newItems = items.filter(item => {
-                    return item.comment.includes(textValue);
-                        
-                });
-                this.setState({ 
-                    filteredItems: newItems,
-                    filters:{
-                        ...this.state.filters,
-                        [filterKey]:{
-                            ...this.state.filters[filterKey],
-                            currentText:textValue
-                        }
-                    } 
-                });
+            //     });
+            //     this.setState({
+            //         filteredItems: newItems,
+            //         filters: {
+            //             ...this.state.filters,
+            //             [filterKey]: {
+            //                 ...this.state.filters[filterKey],
+            //                 currentText: textValue
+            //             }
+            //         }
+            //     },()=>console.log(this.getSelectedRatingFilters()));
 
-            }
-
-        } else if(config.type == "button"){
-            let newFilterVal = {...filterVal};
-            newFilterVal.isSelected = !newFilterVal.isSelected;
-            
-            this.setState({
-                filters:{
+            // }
+            newState = {
+                filters: {
                     ...this.state.filters,
-                    [filterKey]:newFilterVal
+                    [filterKey]: {
+                        ...this.state.filters[filterKey],
+                        currentText: textValue
+                    }
                 }
-            });
+            };
+
+        } else if (config.type == "button") {
+            let newFilterVal = { ...filterVal };
+            newFilterVal.isSelected = !newFilterVal.isSelected;
+
+            // this.setState({
+            //     filters: {
+            //         ...this.state.filters,
+            //         [filterKey]: newFilterVal
+            //     }
+            // }, ()=>console.log(this.getSelectedRatingFilters()));
+
+            newState = {
+                filters: {
+                    ...this.state.filters,
+                    [filterKey]: newFilterVal
+                }
+            }
         }
 
+        this.setState(newState, () => {
+            let selectedRatingFilters = this.getSelectedRatingFilters();
+            const copyItems = [...this.state.items];
+
+            let newItems = copyItems.filter(item => {
+                let filterFlag = false;
+
+                if(selectedRatingFilters.length === 0 && this.state.filters["filter0"].currentText.trim() !== "" ) {
+                    
+                    filterFlag = item.comment.includes(this.state.filters["filter0"].currentText);
+
+                }else if(selectedRatingFilters.length !== 0 && this.state.filters["filter0"].currentText.trim() === "" ){
+                    
+                    selectedRatingFilters.forEach(selectedFilter => {
+                        if(this.state.filters[selectedFilter].config.value === item.rating){
+                            filterFlag = true;
+                        }
+                    });
+                    
+                }
+                else {
+                    selectedRatingFilters.forEach(selectedFilter => {
+                        if(this.state.filters[selectedFilter].config.value === item.rating && item.comment.includes(this.state.filters["filter0"].currentText)){
+                            filterFlag = true;
+                        }
+                    });
+                    
+                }
+               
+                return filterFlag;
+            });
+
+            if(this.state.filters["filter0"].currentText.trim() === "" && selectedRatingFilters.length === 0){
+
+                this.setState({
+                    filteredItems: this.state.items
+                });
+
+            }else{
+                this.setState({
+                    filteredItems: newItems
+                });
+            }
+
+
+        });
+
     }
 
-    getAllOnFilters = () =>{
-       let keys = Object.keys(this.state.filters)
-       let onFilters = keys.filter(key => {
-            return (this.state.filters[key].config.type === "button" && this.state.filters[key].isSelected) 
+    getSelectedRatingFilters = () => {
+        let keys = Object.keys(this.state.filters)
+        let selectedRatingFilters = keys.filter(key => {
+            return (this.state.filters[key].config.type === "button" && this.state.filters[key].isSelected);
         });
-       return onFilters;
+        return selectedRatingFilters;
     }
+
     render() {
         let content = null;
         if (this.state.isDataLoading) {
