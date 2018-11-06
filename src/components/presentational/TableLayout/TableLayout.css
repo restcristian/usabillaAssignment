@@ -29,7 +29,7 @@
 .browser,
 .device,
 .platfrm{
-    flex:1;
+    flex:0.5;
     text-align:center;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -53,6 +53,11 @@
 
 .contentRow span{
     word-break: break-all;
+    display: inline-block;
+}
+
+.contentRow .comment span{
+    max-width:395px;
 }
 .contentRow .rating span,
 .mobileContent.mobileRating span
