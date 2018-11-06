@@ -5,6 +5,7 @@ import Filters from '../presentational/Filters/Filters';
 import TableLayout from '../presentational/TableLayout/TableLayout';
 
 import { fetchItemsLocally } from '../../helpers/api';
+import {sortItemsBy} from '../../helpers/formatHelper';
 
 import styles from './App.css';
 class App extends Component {
@@ -62,7 +63,8 @@ class App extends Component {
 
         this.setState({ isDataLoading: true }, () => {
             fetchItemsLocally().then(response => {
-                this.setState({ items: response, filteredItems: response, isDataLoading: false });
+                let sortedItems = sortItemsBy(response, "rating");
+                this.setState({ items: sortedItems, filteredItems: sortedItems, isDataLoading: false });
             });
         });
     }
@@ -131,6 +133,8 @@ class App extends Component {
                 return filterFlag;
             });
 
+            let sortedItems = sortItemsBy(newItems, "rating");
+
             if(this.state.filters["filter0"].currentText.trim() === "" && selectedRatingFilters.length === 0){
                 this.setState({
                     filteredItems: this.state.items
@@ -138,7 +142,7 @@ class App extends Component {
 
             }else{
                 this.setState({
-                    filteredItems: newItems
+                    filteredItems: sortedItems
                 });
             }
 
