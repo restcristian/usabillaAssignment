@@ -4,11 +4,11 @@ import styles from './Header.css';
 
 const Header = props => {
     return (
-        <div>
+        <header>
             <div className={styles.header}>
-                <i className="" ></i><span className={styles.title}>{props.title}</span>
+                <h1 className={styles.title}>{props.title}</h1>
             </div>
-        </div>
+        </header>
 
     );
 }

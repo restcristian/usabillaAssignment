@@ -172,7 +172,7 @@ class App extends Component {
                 );
         }
         return (
-            <div>
+            <main>
                 <Header title="Dashboard" />
                 <div className={styles.container}>
                     <Filters
@@ -180,7 +180,7 @@ class App extends Component {
                         filters={this.state.filters} />
                     {content}
                 </div>
-            </div>
+            </main>
 
         );
     }
