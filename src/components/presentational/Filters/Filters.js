@@ -15,6 +15,8 @@ const Filters = props => {
                     placeholder="Search here!" 
                     filterKey = {textFilterKey}
                     filterVal = {textFilterVal}
+                    name = "InputSearch"
+                    label = "Search Here!"
                     onChange = {props.onFiltering}/>
             </div>
             <div>
