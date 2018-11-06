@@ -2,6 +2,8 @@
     width:100%;
     border-radius: 2px;
     background-color: #fff;
+    max-height: calc(100vh - 108px);
+    overflow: auto;
 }
 .tableRow{
     display: flex;
@@ -77,13 +79,14 @@
 .contentRow .browser span{
     display: block;
     /* max-width:55px; */
+
+
 }
 /* Mobile Layout */
 
-
-
 .tableLayoutMobile{
-  
+    max-height: calc(100vh - 108px);
+    overflow: auto;
 }
 
 .tableMobileRow{
