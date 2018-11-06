@@ -75,28 +75,7 @@ class App extends Component {
 
         if (config.type === "text") {
             const textValue = event.target.value.toLowerCase();
-            // const items = [...this.state.items];
-
-            // if (event.target.value.trim().length === ""){
-            //     this.setState({ filteredItems: newItems });
-            // } else {
-
-            //     let newItems = items.filter(item => {
-            //         return item.comment.includes(textValue);
-
-            //     });
-            //     this.setState({
-            //         filteredItems: newItems,
-            //         filters: {
-            //             ...this.state.filters,
-            //             [filterKey]: {
-            //                 ...this.state.filters[filterKey],
-            //                 currentText: textValue
-            //             }
-            //         }
-            //     },()=>console.log(this.getSelectedRatingFilters()));
-
-            // }
+           
             newState = {
                 filters: {
                     ...this.state.filters,
@@ -111,12 +90,6 @@ class App extends Component {
             let newFilterVal = { ...filterVal };
             newFilterVal.isSelected = !newFilterVal.isSelected;
 
-            // this.setState({
-            //     filters: {
-            //         ...this.state.filters,
-            //         [filterKey]: newFilterVal
-            //     }
-            // }, ()=>console.log(this.getSelectedRatingFilters()));
 
             newState = {
                 filters: {
@@ -159,7 +132,6 @@ class App extends Component {
             });
 
             if(this.state.filters["filter0"].currentText.trim() === "" && selectedRatingFilters.length === 0){
-
                 this.setState({
                     filteredItems: this.state.items
                 });
