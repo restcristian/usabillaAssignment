@@ -5,7 +5,7 @@ import Filters from '../presentational/Filters/Filters';
 import TableLayout from '../presentational/TableLayout/TableLayout';
 
 import { fetchItemsLocally } from '../../helpers/api';
-import {sortItemsBy} from '../../helpers/formatHelper';
+import { sortItemsBy } from '../../helpers/formatHelper';
 
 import styles from './App.css';
 class App extends Component {
@@ -77,7 +77,7 @@ class App extends Component {
 
         if (config.type === "text") {
             const textValue = event.target.value.toLowerCase();
-           
+
             newState = {
                 filters: {
                     ...this.state.filters,
@@ -108,39 +108,39 @@ class App extends Component {
             let newItems = copyItems.filter(item => {
                 let filterFlag = false;
 
-                if(selectedRatingFilters.length === 0 && this.state.filters["filter0"].currentText.trim() !== "" ) {
-                    
+                if (selectedRatingFilters.length === 0 && this.state.filters["filter0"].currentText.trim() !== "") {
+
                     filterFlag = item.comment.includes(this.state.filters["filter0"].currentText);
 
-                }else if(selectedRatingFilters.length !== 0 && this.state.filters["filter0"].currentText.trim() === "" ){
-                    
+                } else if (selectedRatingFilters.length !== 0 && this.state.filters["filter0"].currentText.trim() === "") {
+
                     selectedRatingFilters.forEach(selectedFilter => {
-                        if(this.state.filters[selectedFilter].config.value === item.rating){
+                        if (this.state.filters[selectedFilter].config.value === item.rating) {
                             filterFlag = true;
                         }
                     });
-                    
+
                 }
                 else {
                     selectedRatingFilters.forEach(selectedFilter => {
-                        if(this.state.filters[selectedFilter].config.value === item.rating && item.comment.includes(this.state.filters["filter0"].currentText)){
+                        if (this.state.filters[selectedFilter].config.value === item.rating && item.comment.includes(this.state.filters["filter0"].currentText)) {
                             filterFlag = true;
                         }
                     });
-                    
+
                 }
-               
+
                 return filterFlag;
             });
 
             let sortedItems = sortItemsBy(newItems, "rating");
 
-            if(this.state.filters["filter0"].currentText.trim() === "" && selectedRatingFilters.length === 0){
+            if (this.state.filters["filter0"].currentText.trim() === "" && selectedRatingFilters.length === 0) {
                 this.setState({
                     filteredItems: this.state.items
                 });
 
-            }else{
+            } else {
                 this.setState({
                     filteredItems: sortedItems
                 });
@@ -164,7 +164,12 @@ class App extends Component {
         if (this.state.isDataLoading) {
             content = <span>Loading...</span>;
         } else {
-            content = <TableLayout items={this.state.filteredItems} />
+            content =
+                (
+                    <TableLayout
+                        items={this.state.filteredItems}
+                        mobileBreakpoint={560} />
+                );
         }
         return (
             <div>

@@ -108,7 +108,7 @@ class TableLayout extends Component {
     
 
     checkWindowSize = (event) => {
-        this.setState({ isMobile: window.innerWidth <= 560 });
+        this.setState({ isMobile: window.innerWidth <= this.props.mobileBreakpoint });
     }
 
 
