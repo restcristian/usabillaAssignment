@@ -69,8 +69,7 @@ class App extends Component {
 
         this.setState({ isDataLoading: true }, () => {
             fetchItemsLocally().then(response => {
-                let sortedItems = sortItemsBy(response, "rating");
-                this.setState({ items: sortedItems, filteredItems: sortedItems, isDataLoading: false });
+                this.setState({ items: response, filteredItems: response, isDataLoading: false });
             });
         });
     }
