@@ -5,9 +5,19 @@
     padding:12px;
 }
 
+.headerWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.headerWrapper img{
+    max-width:20px;
+}
+
 .title{
     font-size: 1.2rem;
     font-weight: 500;
     color:#5a5a5a;
+    padding-left: 8px;
 }
 
