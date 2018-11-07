@@ -9,12 +9,16 @@
     padding-left: 23px;
 }
 
-@media(max-width:351px){
+@media(max-width:767px){
     .filters{
         display: block;
     }
     .filters > div:first-child{
         text-align: center;
+    }
+    .filters > div:first-child > input{
+        max-width:none;
+        width:100%;
     }
     .filters > div:nth-child(2){
         padding-left: 0;
@@ -22,6 +26,5 @@
     .filters > div:nth-child(2) ul{
         margin-top:12px;
         justify-content: center;
-        
     }
 }

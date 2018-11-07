@@ -13,7 +13,7 @@ const InputText = props => {
             <input
                 id={props.name}
                 name={props.name}
-                className={styles.inputText}
+                className={[styles.inputText, props.className].join(' ')}
                 type={props.type}
                 placeholder={props.placeholder}
                 onChange={(event) => props.onChange(event, props.filterKey, props.filterVal)}
