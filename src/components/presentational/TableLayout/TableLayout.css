@@ -12,7 +12,12 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box; 
     /* border-top:1px solid #cdd3d8; */
-    border-bottom:1px solid #cdd3d8;  
+    border-bottom:1px solid #d3d3d3;  
+    
+}
+.tableRow:not(.tableHeading):hover{
+    background-color:rgba(91,98,104,0.2);
+    cursor: pointer;
 }
 .tableHeading,
 .tableMobileHeading{
@@ -94,6 +99,7 @@
     background-color: #fff;
     border-bottom: 1px solid #cdd3d8;
     border-top: 1px solid #cdd3d8;
+    cursor: pointer;
 }
 
 .tableMobileHeading{

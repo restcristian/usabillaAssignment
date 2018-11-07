@@ -3,9 +3,11 @@ import './App.css';
 import Header from '../presentational/Header/Header';
 import Filters from '../presentational/Filters/Filters';
 import TableLayout from '../presentational/TableLayout/TableLayout';
+import Modal from '../presentational/Modal/Modal';
 
 import { fetchItemsLocally } from '../../helpers/api';
 import { sortItemsBy } from '../../helpers/formatHelper';
+
 
 import styles from './App.css';
 class App extends Component {
@@ -57,6 +59,10 @@ class App extends Component {
             },
         },
         isDataLoading: false,
+        modal: {
+            isOpen: false,
+            currentItem: {}
+        }
     }
 
     componentDidMount() {
@@ -151,6 +157,26 @@ class App extends Component {
 
     }
 
+    openModal = (item) => {
+        let currentItem = { ...item };
+        this.setState({
+            modal: {
+                isOpen: true,
+                currentItem: currentItem
+            }
+        });
+    }
+
+    closeModal = () => {
+
+        this.setState({
+            modal: {
+                isOpen: false,
+                currentItem: {}
+            }
+        });
+    }
+
     getSelectedRatingFilters = () => {
         let keys = Object.keys(this.state.filters)
         let selectedRatingFilters = keys.filter(key => {
@@ -161,6 +187,8 @@ class App extends Component {
 
     render() {
         let content = null;
+        const { currentItem } = this.state.modal;
+
         if (this.state.isDataLoading) {
             content = <span>Loading...</span>;
         } else {
@@ -168,8 +196,17 @@ class App extends Component {
                 (
                     <TableLayout
                         items={this.state.filteredItems}
+                        onClickItem={this.openModal}
                         mobileBreakpoint={560} />
                 );
+        }
+        let modalImage = null;
+
+        if (currentItem.images) {
+            modalImage = (
+                <div>
+                    <img src={currentItem.images.screenshot.url} alt={currentItem.id} />
+                </div>);
         }
         return (
             <main>
@@ -180,6 +217,22 @@ class App extends Component {
                         filters={this.state.filters} />
                     {content}
                 </div>
+                <Modal
+                    closeModal={this.closeModal}
+                    isOpen={this.state.modal.isOpen}
+                    headerText={`Id:${currentItem.id}`}>
+                    <div>
+                        <span>Location:</span>
+                        <p>{currentItem.computed_location}</p>
+                    </div>
+                    <div>
+                        <span>Full Comment:</span>
+                        <p>{currentItem.comment}</p>
+                    </div>
+
+                    {modalImage}
+
+                </Modal>
             </main>
 
         );

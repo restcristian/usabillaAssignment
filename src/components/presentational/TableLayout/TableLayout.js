@@ -32,7 +32,7 @@ class TableLayout extends Component {
                 <div className={styles.tableLayoutMobile}>
                     {items.map((item, idx) => {
                         return (
-                            <div key={item.id} className={styles.tableMobileRow}>
+                            <div onClick= {()=>this.props.onClickItem(item)} key={item.id} className={styles.tableMobileRow}>
                                 <div className={styles.tableMobileHeading}>
                                     <div className={styles.mobileRating}>Rating</div>
                                 </div>
@@ -86,7 +86,7 @@ class TableLayout extends Component {
                     </div>
                     {items.map((item, idx) => {
                         return (
-                            <div key={item.id} className={[styles.tableRow, styles.contentRow].join(' ')}>
+                            <div onClick= {()=>this.props.onClickItem(item)} key={item.id} className={[styles.tableRow, styles.contentRow].join(' ')}>
                                 <div className={styles.rating}><span>{item.rating}</span></div>
                                 <div className={styles.comment}><span>{trimText(item.comment, maxNumOfCharacters)}</span></div>
                                 <div className={styles.browser}>
