@@ -35,7 +35,10 @@
     "react-dom": "^16.6.0"
   },
   "browserslist": [
-    " > 1%",
-    "ie > 9"
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+ 
   ]
 }
