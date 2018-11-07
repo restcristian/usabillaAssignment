@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --p"
   },
   "author": "Cristian Restituyo",
   "license": "MIT",
