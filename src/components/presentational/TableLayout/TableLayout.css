@@ -2,7 +2,7 @@
     width:100%;
     border-radius: 2px;
     background-color: #fff;
-    max-height: calc(100vh - 108px);
+    max-height: calc(100vh - 222px);
     overflow: auto;
 }
 .tableRow{
@@ -85,7 +85,7 @@
 /* Mobile Layout */
 
 .tableLayoutMobile{
-    max-height: calc(100vh - 108px);
+    max-height: calc(100vh - 222px);
     overflow: auto;
 }
 
